@@ -1,7 +1,7 @@
-Hello! Here is how the website is set up
+Hello! Here is how the website is set up:
 
-Front End or client facing - Templates Folder - index.html, Static Folder - styles.css and script. js.
+Front End: templates/index.html, static/styles.css, and static/script.js.
 
-Back End - app.py
+Back End: app.py
 
-Dashboard Analytics - dashboard.py
+Dashboard Analytics: dashboard.py
