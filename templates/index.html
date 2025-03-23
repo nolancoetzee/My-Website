@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My Website</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Futura+PT:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Expanded Menu Bar -->
+    <div class="menu-bar">
+    <div class="menu-bar-left">
+      <p></p> <!-- Placeholder for left menu content -->
+    </div>
+    <div class="menu-bar-right">
+      <a href="#projects" class="button">Projects</a>
+      <a href="#expertise" class="button">Expertise</a>
+      <a href="#about-me-button" class="button contact-me-button">Contact Me</a>
+    </div>
+  </div>
+
+  <section id= "opening" class="container">
+    <div class="opening-section-conent"></div>
+    <!-- Left Side -->
+    <div id="intro-section" class="left-side">
+      <div class="intro">
+        <h1>Nolan Coetzee</h1>
+        <h2>Data/Business Analyst</h2>
+        <button id="about-me" class="about-me-button track-click">About Me</button>
+      </div>
+    </div>
+
+    <!-- Right Side with Carousel -->
+    <div class="right-side">
+      <div class="scene section">
+        <iframe src="https://my.spline.design/untitled-2fcd02c21622ce1b97c3912373d7b0dd/" frameborder="0"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pop-up Overlay -->
+<div id="popup-overlay" style="display: none;"></div>
+
+<!-- Pop-up -->
+<div class="popup" id="popup" style="display: none;">
+  <div class="popup-content">
+    <button class="close-button">X</button>
+    <div class="about-me-section">
+      <h2 class="about-me-title">About Me</h2>
+      <p class="initial-text">Hello, I'm Nolan Coetzee.</p>
+      <p class="hidden-text">After hanging up my soccer boots, I pivoted to computer programming and data analytics, where I’m now engineering plays of a different kind. I’m intrigued by modern AI and machine learning, and I hope to explore robotics someday—though my robotics knowledge is non-existent.  I’m a lifelong learner, always building, and up for a good convo. Want to talk? Send me a message!</p>
+    </div>
+    <div class="talk-to-me-section">
+      <h2>Talk to Me</h2>
+      <form id="messageForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Your Name">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Your Email">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>  <!-- Added submit button -->
+      </form>
+    </div>
+  </div> 
+</div>
+
+<div class="scroll-arrow">↓</div>  
+
+<section id="projects">
+  <div class="projects-section-content">
+    <h2 class="projects-title">Projects</h2>
+    <h3 class="projects-subtitle">Featured Work</h3>
+    <div class="projects-container">
+        <!-- Row 1: Spotify Project -->
+        <div class="row project-spotify">
+            <div class="column image-column">
+                <img src="/static/Spotify.jpg" alt="Spotify Project">
+            </div>
+            <div class="column text-column">
+                <h3 class="project-title">Amplifying Spotify: Song Popularity Analysis</h3> 
+                <h4 class="project-subtitle">Python</h4> 
+                <p class="project-body">In this dynamic educational project, our team of five "collaborated" with Spotify to boost revenue through cutting-edge machine learning innovation. We engineered a trio of predictive models: a neural network, logistic regression, and decision tree to pinpoint songs with hit potential, empowering Spotify to recommend chart-toppers to users with precision. After rigorous testing, our neural network emerged as the star performer, delivering unparalleled value and insights.</p> 
+                <a id="spotify_download" class="download-btn track-click" href="pdfs/Spotify Song Recommendation.pdf" download>Download PDF</a> 
+            </div>
+        </div>
+        <!-- Row 2: BC Project -->
+        <div class="row project-BC">
+            <div class="column text-column">
+                <h3 class="project-title">Decriminalization and Drug Overdose: Insights from British Columbia</h3> 
+                <h4 class="project-subtitle">R Programming</h4>
+                <p class="project-body">In a groundbreaking shift in drug policy, British Columbia, Canada, has decriminalized the personal possession of small amounts of certain illegal drugs including cocaine, methamphetamine, ecstasy, and opioids—from January 2023 to January 2026. Under the Controlled Drugs and Substances Act, adults in the province can now carry these substances in public spaces without facing criminal charges. This bold experiment positions British Columbia at the forefront of rethinking how society addresses substance use, sparking debate about its implications for public health.</p> 
+                <a id="british-columbia" class="download-btn track-click" href="pdfs/British Columbia Overdose Analytics.pdf" download>Download PDF</a> 
+            </div>
+            <div class="column image-column">
+                <img src="/static/BC.jpg" alt="BC Project">
+            </div>
+        </div>
+        <!-- Row 3: Concert Venue Project -->
+        <div class="row project-ConcertVenue">
+            <div class="column image-column">
+                <img src="/static/ConcertVenue.jpg" alt="Concert Venue Project">
+            </div>
+            <div class="column text-column">
+                <h3 class="project-title">Concert Venue Database Management</h3> 
+                <h4 class="project-subtitle">SQL</h4> 
+                <p class="project-body">Our team of 3 took on the challenge of creating our own Concert Venue. This meant creating, connecting and managing a Concert Venue database. From concession stands, to performers, to advertising, we developed over 15 entities and connected them all through SQL.</p> 
+                <a id="concert-venue" class="download-btn track-click" href="pdfs/Concert Venue SQL.pdf" download>Download PDF</a>
+            </div>
+        </div>
+        <!-- Row 4: Website Project -->
+        <div class="row project-Website">
+            <div class="column text-column">
+                <h3 class="project-title">Website Portfolio</h3> 
+                <h4 class="project-subtitle">JavaScript</h4> 
+                <p class="project-body">I woke up one day convinced I needed a website, so I built one with zero clue what I was doing - now I know the full stack. Click the GitHub link to see my code!</p> 
+                <a id="github" class="download-btn track-click" href="https://github.com/nolancoetzee" target="_blank">GitHub</a> 
+            </div>
+            <div class="column image-column">
+                <img src="/static/Website1.png" alt="Website Project">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<section id="expertise">
+  <div class="expertise-section-content">
+    <h2 class="expertise-title">Expertise</h2>
+    <h4 class="expertise-subtitle">A brief overview of my skills and specialties</h4>
+    <div class="rectangles-container">
+        <!-- Existing Rectangle -->
+        <div class="rectangle">
+            <!-- Gradient blobs -->
+            <div class="gradient-blob"></div>
+            <div class="gradient-blob"></div>
+            <div class="gradient-blob"></div>
+            <div class="gradient-blob"></div>
+            
+            <!-- Content -->
+            <div class="text-wrapper">
+                <h3>Programming Languages</h3>
+                <img class="normal" src="/static/ProLang.png" alt="Programming Languages">
+                <img class="animated" src="/static/ProLang1.png" alt="Programming Languages Animated">
+                <p>With a strong foundation in Python and JavaScript from self-directed learning, complemented by formal SQL and R training at VCU, I bring a versatile skill set and a deep passion for crafting efficient, innovative solutions through code.</p>
+            </div>
+        </div>
+
+        <!-- New Rectangle 1: Machine Learning Models -->
+        <div class="rectangle">
+            <!-- Gradient blobs -->
+            <div class="gradient-blob"></div>
+            <div class="gradient-blob"></div>
+            <div class="gradient-blob"></div>
+            <div class="gradient-blob"></div>
+            
+            <!-- Content -->
+            <div class="text-wrapper">
+                <h3>Machine Learning Models</h3>
+                <img class="normal" src="/static/models.png" alt="Machine Learning Models">
+                <img class="animated" src="/static/models1.png" alt="Machine Learning Models Animated">
+                <p>With extensive experience across diverse machine learning models and hands-on work developing a large language model, I possess a deep understanding of leveraging these tools to deliver effective, outcome-driven solutions.</p>
+            </div>
+        </div>
+
+        <!-- New Rectangle 2: Presentable Insights -->
+        <div class="rectangle">
+            <!-- Gradient blobs -->
+            <div class="gradient-blob"></div>
+            <div class="gradient-blob"></div>
+            <div class="gradient-blob"></div>
+            <div class="gradient-blob"></div>
+            
+            <!-- Content -->
+            <div class="text-wrapper">
+                <h3>Presentable Insights</h3>
+                <img class="normal" src="/static/pi.png" alt="Presentable Insights">
+                <img class="animated" src="/static/pi1.png" alt="Presentable Insights Animated">
+                <p>With a talent for simplifying complex data insights for non-technical audiences, I combine strong communication and presentation skills to deliver clear, actionable value from analytics.</p>
+            </div>
+        </div>
+    </div>
+</section>
+  
+  <footer id="footer">
+    <div class="footer-content">
+      <h2 class="footer-name">Nolan Coetzee</h2>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/nolan-coetzee-867923253/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/nolancoetzee" target="_blank">GitHub</a>
+      </div>
+      <p class="copyright">© 2025 Nolan Coetzee</p>
+    </div>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
