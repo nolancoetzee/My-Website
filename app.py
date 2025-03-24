@@ -1,17 +1,24 @@
+import os
 from flask import Flask, render_template, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from datetime import datetime
-import os
 
 app = Flask(__name__)
 
-# PostgreSQL configuration for local Windows setup
-# Replace 'mysecretpassword' with the password you set during installation
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:StevenTranBlockHead#PostgreSQL@localhost/website_db'
+# Get DATABASE_URL from environment, with your local PostgreSQL as fallback
+DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://postgres:StevenTranBlockHead#PostgreSQL@localhost/website_db')
+if DATABASE_URL and DATABASE_URL.startswith('postgres://'):
+    DATABASE_URL = DATABASE_URL.replace('postgres://', 'postgresql://', 1)  # Fix for SQLAlchemy compatibility
+
+# Set the database URI in Flask config
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Initialize SQLAlchemy and Migrate
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+
 
 # Models (based on your original code, expanded as needed)
 class Message(db.Model):
