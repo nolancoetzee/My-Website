@@ -1,0 +1,1233 @@
+/* Ensure the opening section is full height for the initial view */
+#opening {
+  height: 100vh; /* Adjust as needed */
+}
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica', sans-serif;
+  }
+  /* Top Section Background */
+.top-section {
+  background: linear-gradient(to bottom, #000000, #000000);
+  /* You can include any padding or margin you need */
+}  
+  /* Expanded Menu Bar */
+  .menu-bar {
+    height: 80px; /* 0.5 inches */
+    width: 100%; /* 13.5 inches */
+    background: linear-gradient(to bottom, hsl(0, 0%, 92%), #ffffff);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px; /* Center if screen is wider */
+  }
+  
+  .menu-bar-left {
+    padding-left: 0px;
+  }
+  
+  .menu-bar-right {
+    padding-right: 0px;
+  }
+  
+/* Style for the buttons (originally for <button>, now for <a>) */
+  .menu-bar-right .button {
+    margin-right: 50px;
+    padding: 30px;
+    margin-left: 10px;
+    font: 20px 'Open Sans', sans-serif;
+    font-weight: 700;
+    color: rgb(0, 0, 0); /* Black text */
+    cursor: pointer; /* Hand on hover */
+    text-decoration: none; /* Remove underline from links */
+    display: inline-block; /* Mimic button behavior */
+  }
+  .menu-bar-right button:hover {
+    background-color: none; /* Darker blue on hover */
+  }
+  
+  /* Main Container */
+  .container {
+    display: flex;
+    height: 720px; /* 7.5 inches remaining */
+    width: 1296px; /* 13.5 inches */
+    margin: 0 auto; /* Center it */
+  }
+  
+  /* Left Side */
+  .left-side {
+    width: 648px; /* Half of 13.5 inches */
+    height: 100%;
+    background-color: #fff;
+  }
+  .intro {
+    text-align: center;
+    transform: translateX(0); /* Start at center; adjust this value to move */
+    margin-top: 200px;
+}
+  
+  .intro h1 {
+    font-size: 60px; /* Big and bold for your name */
+    margin: 0;
+    color: #1d1d1f; /* Dark gray for contrast */
+  }
+  
+  .intro h2 {
+    font-size: 30px; /* Smaller for subtitle */
+    margin: 10px 0 0 0; /* Keeps it below h1 */
+    color: #666; /* Lighter gray for subtlety */
+    font-weight: 400; /* Less bold than the name */
+    text-align: left; /* Aligns text to the left */
+    width: fit-content; /* Shrinks container to text width */
+    margin-left: auto; /* Centers the h2 block */
+    margin-right: auto; /* Centers the h2 block */
+    transform: translateX(-50px); /* Shifts left by half its width */
+  }
+  
+/* Container setup */
+.right-side {
+  width: 900px;
+  height: 85%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+  /* Remove pointer-events: none from here */
+}
+
+.scene {
+  width: 800px;
+  height: 565px;
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+}
+
+/* Critical iframe fixes */
+.scene iframe {
+  position: relative;
+  width: 750px;
+  height: 500px;
+  left: 0;
+  top: 10%;
+  border: none;
+  transform: scale(1.35);
+  transform-origin: center;
+  z-index: 0;
+  
+  /* Force the iframe to pass mouse events through to parent */
+  pointer-events: none !important;
+}
+
+/* Add this for scroll handling */
+html, body {
+  scroll-behavior: smooth;
+}
+  
+/* About Me Button */
+.about-me-button {
+    background-color: red;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px; /* Space below the subtitle */
+    display: block;
+    margin-left: 175px;
+    margin-right: auto; /* Centers the button */
+    transform: translateX(-120px);
+  }
+  
+  /* Define customizable variables */
+  :root {
+    --popup-height: 90vh; /* Adjust this to change how much the pop-up covers */
+    --popup-width: 60vw;  /* Adjust this to change the width of the pop-up */
+    --animation-duration: 1s; /* Adjust this for animation speed */
+  }
+  
+  /* General Pop-up Styles */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 700px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1000;
+    
+  }
+  
+  .popup-active {
+    opacity: 1;
+    
+  }
+  
+  #popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    
+    
+  }
+  
+  .popup-content {
+    display: flex;
+    flex-direction: row; /* Side-by-side sections */
+    height: 500px; /* Adjust as needed */
+    border-radius: 5px;
+
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  
+  /* Talk to Me Section */
+  .talk-to-me-section {
+    flex: 1;
+    padding: 40px 20px 20px 20px; /* 40px ≈ 1 inch from top */
+    background-color: #f9f9f9; /* Light background for contrast */
+  }
+  
+  .talk-to-me-section h2 {
+    font-size: 2em; /* Big font */
+    margin-bottom: 1em;
+  }
+  
+  .talk-to-me-section label {
+    display: block;
+    font-size: 1.2em; /* Smaller font */
+    margin-bottom: 0.5em;
+  }
+  
+  .talk-to-me-section input,
+  .talk-to-me-section textarea {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* About Me Section */
+  .about-me-section {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, hsl(0, 0%, 0%), #222222);
+    padding: 5px;
+  }
+  
+  .about-me-title {
+    font-family: 'Playfair Display', serif; /* Professional, captivating font */
+    font-size: 2.5em;
+    transition: transform 2s ease-in-out;
+    color: white;
+  }
+  
+  .initial-text {
+    transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+    color: white;
+  }
+  
+  .hidden-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1em;
+    position: absolute;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 30%;
+    flex: 1;
+    opacity: 0;
+    transition: opacity 2s ease-in-out 2s; /* Delay for scroll effect */
+    width: 70%;
+    text-align: center;
+    color: white;
+  }
+  
+  /* Animation States */
+  .about-me-section.animate .about-me-title {
+    transform: translateY(-150px); /* Moves up smoothly */
+  }
+  
+  .about-me-section.animate .initial-text {
+    transform: translateY(150px); /* Moves down smoothly */
+    opacity: 0; /* Fades away */
+  }
+  
+  .about-me-section.animate .hidden-text {
+    opacity: 1; /* Fades in */
+  }
+
+  button[type="submit"] {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  button[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+
+
+
+
+
+  
+  /* scroll arrow indicator */
+
+    /* Style and position the scroll arrow */
+  .scroll-arrow {
+    position: absolute;
+    bottom: 20px; /* Distance from the bottom of the viewport or parent */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for the element's width */
+    font-size: 40px; /* Size of the arrow */
+    color: #000; /* Adjust color to match your design */
+    animation: bounce 2s infinite; /* Add a bouncing effect */
+  }
+
+  /* Bouncing animation */
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateX(-50%) translateY(0); /* No vertical shift */
+    }
+    40% {
+      transform: translateX(-50%) translateY(-10px); /* Move up 10px */
+    }
+    60% {
+      transform: translateX(-50%) translateY(-5px); /* Move up 5px */
+    }
+  }
+
+
+
+
+
+
+
+
+
+  /* Project Section New */
+
+
+  #projects {
+    text-align: center;
+    background: linear-gradient(to bottom, hsl(189, 100%, 97%), #f9f9ff); /* Pick your color */
+    padding: 20px; /* Optional but nice */
+    overflow: hidden;
+  }
+  
+    .projects-title {
+      font-size: 48px;
+      color: #000000;
+      margin-bottom: 0.5em;
+      filter: drop-shadow(0px 0px 1px rgb(168, 168, 168));
+  }
+
+  .projects-subtitle {
+      font-size: 20px;
+      color: #969696;
+      margin-bottom: 100px;
+  }
+
+
+  .projects-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+  }
+
+  .row {
+      display: flex;
+      gap: 0px;
+      justify-content: center;
+  }
+
+  .row:nth-child(1) {
+    transform: translateX(-75px);
+  }
+
+  .row:nth-child(2) {
+    transform: translateX(100px);
+  }
+
+  .row:nth-child(3) {
+    transform: translateX(-75px);
+    margin-top: 50px;
+  }
+
+  .row:nth-child(4) {
+    transform: translateX(100px);
+  }
+
+  .column {
+      width: 500px;
+      height: 400px;
+  }
+
+  .image-column img {
+      width: 450px;
+      height: 300px;
+      filter: drop-shadow(0px 0px 3px black);
+      border-radius: 3px;
+  }
+
+  .project-BC .image-column img {
+    width: 475px;
+    height: 350px;
+    transform: translateX(20px);
+  }
+
+  .text-column {
+      padding: 0px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      ;
+  }
+
+  .download-btn {
+      background-color: lightblue;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+  }
+
+
+  /*Project Spotify Customization */
+
+  .project-spotify .project-title {
+    font: 40px 'Open Sans', sans-serif; /* Size and family together */
+    font-weight: 600;
+    color: #000000;
+    text-align: left;
+    margin: 0;
+    filter: drop-shadow(0px 0px 1px rgb(219, 219, 219));
+  }
+  .project-spotify .project-subtitle {
+    font: 32px 'Open Sans', sans-serif; /* Size and family together */
+    font-weight: none;
+    color: grey;
+    text-align: left;
+    margin: 0;
+    filter: drop-shadow(0px 0px 1px rgb(219, 219, 219))
+  }
+  .project-spotify .project-body {
+    font: 12px 'Open Sans', sans-serif; /* Size and family together */
+    font-weight: none;
+    color: #000000;
+    text-align: left;
+    text-align: justify;
+    filter: drop-shadow(0px 0px 1px rgb(219, 219, 219))
+  }
+  .project-spotify .download-btn {
+    background: hsl(189, 100%, 97%);
+    color: rgb(33, 118, 63);
+    border-color: rgb(33, 118, 63);
+    border-width: 2px;
+    border-style: solid; /* Added to make the border visible */
+    padding: 5px 10px;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 20px;
+    display: block;
+    margin: 10px auto;
+    filter: drop-shadow(0px 0px 1px rgb(219, 219, 219));
+    transform: translateX(-170px);    
+  }
+    
+  /*Project BC Customization */
+  .project-BC .project-title {
+    font: 36px 'Open Sans', sans-serif; /* Size and family together */
+    font-weight: 600;
+    color: #000000;
+    text-align: left;
+    margin: 0;
+    filter: drop-shadow(0px 0px 1px rgb(219, 219, 219));
+  }
+  .project-BC .project-subtitle {
+    font: 32px 'Open Sans', sans-serif; /* Size and family together */
+    font-weight: none;
+    color: grey;
+    text-align: left;
+    margin: 0;
+    filter: drop-shadow(0px 0px 1px rgb(219, 219, 219))
+  }
+  .project-BC .project-body {
+    font: 11px 'Open Sans', sans-serif; /* Size and family together */
+    font-weight: none;
+    color: #000000;
+    text-align: left;
+    text-align: justify;
+    filter: drop-shadow(0px 0px 1px rgb(219, 219, 219))
+  }
+  .project-BC .download-btn {
+    background: hsl(189, 100%, 97%);
+    color: rgb(33, 118, 63);
+    border-color: rgb(33, 118, 63);
+    border-width: 2px;
+    border-style: solid; /* Added to make the border visible */
+    padding: 5px 10px;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 20px;
+    display: block;
+    margin: 10px auto;
+    filter: drop-shadow(0px 0px 1px rgb(219, 219, 219));
+    transform: translateX(-170px);    
+  }
+
+  /*Project Concert Venue Customization */
+  .project-ConcertVenue .project-title {
+    font: 40px 'Open Sans', sans-serif; /* Size and family together */
+    font-weight: 600;
+    color: #000000;
+    text-align: left;
+    margin: 0;
+    filter: drop-shadow(0px 0px 1px rgb(219, 219, 219));
+  }
+  .project-ConcertVenue .project-subtitle {
+    font: 32px 'Open Sans', sans-serif; /* Size and family together */
+    font-weight: none;
+    color: grey;
+    text-align: left;
+    margin: 0;
+    filter: drop-shadow(0px 0px 1px rgb(219, 219, 219))
+  }
+  .project-ConcertVenue .project-body {
+    font: 14px 'Open Sans', sans-serif; /* Size and family together */
+    font-weight: none;
+    color: #000000;
+    text-align: left;
+    text-align: justify;
+    filter: drop-shadow(0px 0px 1px rgb(219, 219, 219))
+  }
+  .project-ConcertVenue .download-btn {
+    background: hsl(189, 100%, 97%);
+    color: rgb(33, 118, 63);
+    border-color: rgb(33, 118, 63);
+    border-width: 2px;
+    border-style: solid; /* Added to make the border visible */
+    padding: 5px 10px;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 20px;
+    display: block;
+    margin: 10px auto;
+    filter: drop-shadow(0px 0px 1px rgb(219, 219, 219));
+    transform: translateX(-170px);    
+  }
+
+  /*Project Website Customization */
+  .project-Website .project-title {
+    font: 40px 'Open Sans', sans-serif; /* Size and family together */
+    font-weight: 600;
+    color: #000000;
+    text-align: left;
+    margin: 0;
+    filter: drop-shadow(0px 0px 1px rgb(219, 219, 219));
+  }
+  .project-Website .project-subtitle {
+    font: 32px 'Open Sans', sans-serif; /* Size and family together */
+    font-weight: none;
+    color: grey;
+    text-align: left;
+    margin: 0;
+    filter: drop-shadow(0px 0px 1px rgb(219, 219, 219))
+  }
+  .project-Website .project-body {
+    font: 18px 'Open Sans', sans-serif; /* Size and family together */
+    font-weight: none;
+    color: #000000;
+    text-align: left;
+    text-align: justify;
+    filter: drop-shadow(0px 0px 1px rgb(219, 219, 219))
+  }
+  .project-Website .download-btn {
+    background: hsl(189, 100%, 97%);
+    color: rgb(145, 145, 145);
+    border-color: rgb(145, 145, 145);
+    border-width: 2px;
+    border-style: solid; /* Added to make the border visible */
+    padding: 5px 10px;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 20px;
+    display: block;
+    margin: 10px auto;
+    filter: drop-shadow(0px 0px 1px rgb(219, 219, 219));
+    transform: translateX(-170px);    
+  }
+
+
+
+
+
+
+
+ /* Expertise Section */
+
+
+
+
+
+
+
+/* Expertise Section */
+#expertise {
+  padding: 50px;
+  perspective: 1000px; /* For 3D transforms */
+}
+
+.expertise-title {
+  text-align: center;
+  font-size: 48px;
+  margin-bottom: 50px;
+  transform: translateY(-60px);
+}
+
+/* Expertise Section Subtitle */
+.expertise-subtitle {
+  text-align: center;
+  font-size: 20px; /* Smaller than h2, larger than h3 */
+  font-family: 'Open Sans', sans-serif; /* Matches your existing typography */
+  color: #969696; /* Dark gray for subtlety, adjust as needed */
+  margin: 0 0 40px 0; /* Space below subtitle, above rectangles */
+  font-weight: 400; /* Lighter weight for contrast with h2 */
+  transform: translateY(-60px);
+}
+
+.rectangles-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  perspective: 1000px;
+  margin-top: 30px;
+}
+
+/* Base rectangle styling */
+.rectangle {
+  width: 375px;
+  height: 250px;
+  border-radius: 30px;
+  position: relative;
+  border: 0px solid #ffffff; /* Nice blue border */
+  background-color: rgb(235, 235, 235); /* Light gray background */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  filter: drop-shadow(0px 0px 5px rgb(219, 219, 219));
+  overflow: hidden;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Gradient blobs - hidden by default */
+.rectangle .gradient-blob {
+  position: absolute;
+  border-radius: 100%;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.5s ease;
+  z-index: 1; /* Above the rectangle background */
+}
+
+/* Positioning each gradient blob */
+.rectangle .gradient-blob:nth-child(1) {
+  height: 90%;
+  width: 80%;
+  background-color: #ff057c;
+  left: -29%;
+  top: -10%;
+}
+
+.rectangle .gradient-blob:nth-child(2) {
+  height: 80%;
+  width: 70%;
+  background-color: #800f86;
+  top: -12%;
+  right: -10%;
+  animation-delay: 0.3s;
+}
+
+.rectangle .gradient-blob:nth-child(3) {
+  height: 65%;
+  width: 80%;
+  background-color: #499eff;
+  right: -15%;
+  bottom: -20%;
+  animation-delay: 0.3s;
+}
+
+.rectangle .gradient-blob:nth-child(4) {
+  height: 50%;
+  width: 75%;
+  background-color: #1ba8e9;
+  bottom: -10%;
+  left: -18%;
+  animation-delay: .2s;
+}
+
+/* Blur effect for gradient mesh */
+.rectangle::after {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(80px);
+  pointer-events: none;
+  z-index: 2; /* Above the blobs but below content */
+}
+
+/* Text and content styling */
+.text-wrapper {
+  position: relative;
+  z-index: 10; /* Ensure content is above everything */
+  width: 100%;
+  text-align: left;
+}
+
+.rectangle h3 {
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+  font-size: 30px;
+  font-weight: 600;
+  margin: 10px 0;
+  transition: color 0.5s;
+}
+
+.rectangle p {
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+  margin: 10px 0;
+  font-size: 16px;
+  transition: color 0.5s;
+}
+
+.rectangle img {
+  width: 180px;
+  height: 40px;
+  transform: translateX(-20px);
+}
+
+.rectangle img.normal {
+  display: block;
+}
+
+.rectangle img.animated {
+  display: none;
+}
+
+/* HOVER EFFECTS - these are the most critical for your issue */
+.rectangle:hover {
+  transform: translateZ(50px)  !important;
+  background-color: transparent !important; /* Make background transparent to show blobs */
+}
+
+.rectangle:hover .gradient-blob {
+  opacity: 1 !important; /* Show gradient blobs */
+  animation: gradient 4s infinite !important; /* Force animation */
+}
+
+.rectangle:hover img.normal {
+  display: none !important;
+}
+
+.rectangle:hover img.animated {
+  display: block !important;
+}
+
+.rectangle:hover h3,
+.rectangle:hover p {
+  color: white !important; /* Text becomes white on hover */
+}
+
+/* ANIMATION EFFECTS (for JS trigger) */
+#expertise.normal .rectangle {
+  transform: translateZ(0);
+  background-color: rgb(235, 235, 235);
+}
+
+#expertise.normal .rectangle .gradient-blob {
+  opacity: 0;
+  animation: none;
+}
+
+#expertise.animate .rectangle {
+  background-color: transparent;
+  transform: translateZ(50px);
+}
+
+#expertise.animate .rectangle .gradient-blob {
+  opacity: 1;
+  animation: gradient 4s infinite;
+}
+
+#expertise.animate .rectangle img.normal {
+  display: none;
+}
+
+#expertise.animate .rectangle img.animated {
+  display: block;
+}
+
+#expertise.animate .rectangle h3,
+#expertise.animate .rectangle p {
+  color: white;
+}
+
+/* Animation keyframes */
+@keyframes gradient {
+  70% {
+      transform: scale(1.2) translate(50px);
+  }
+}
+
+@keyframes popout {
+  0% { transform: translateZ(0); }
+  50% { transform: translateZ(50px); }
+  100% { transform: translateZ(0); }
+}
+
+
+
+
+
+
+/* Footer */
+
+
+
+
+
+
+
+
+
+#footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 30px 0; /* Adds 30px space from the top and bottom */
+  filter: drop-shadow(0px -2px 1px rgb(84, 84, 84))
+}
+
+.footer-content {
+  max-width: 800px; /* Optional: limits content width */
+  margin: 0 auto;   /* Centers the content horizontally */
+}
+
+.footer-name {
+  font-size: 22px; /* Larger font size for your name */
+  margin-bottom: 3px; /* Space between name and social links */
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 8px; /* Space between links */
+  margin-bottom: 3px; /* Space between links and copyright */
+  text-decoration: underline;
+  color: #3ac0ff;
+}
+
+
+.copyright {
+  font-size: 10px; /* Smaller font for copyright text */
+}
+
+
+@media (max-width: 768px) {
+  .scene {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transform: translateX(0px);
+    left: 0;
+  }
+
+  .scene iframe {
+    position: relative;
+    width: 700px;
+    height: 500px;
+    left: 0%;
+    top: 12%;
+    border: none;
+    transform: translateX(0px)
+  }
+  
+}
+
+
+
+
+
+
+
+/*Opening Section - MOBILEFRIENDLY*/
+
+@media (max-width: 768px) {
+  /* Menu Bar Adjustments */
+  .menu-bar-left {
+    display: none; /* Removes "Menu (Left)" */
+  }
+  .menu-bar {
+    width: 100%; /* Full-width for mobile */
+    height: 100%;
+
+  }
+  .menu-bar-right {
+    display: flex;
+    justify-content: flex-end; /* Aligns links to the right */
+    padding-left: 320px; /* Adds a little space from the edge */
+    background-color: black;
+    height: 100px;
+  }
+  .menu-bar-right .button {
+    font-size: 18px; /* Smaller text for slim appearance */
+    padding: 40px 0px; /* Reduced padding for compactness */
+    color: white;
+  ;
+  }
+
+  /* Container and Main Sections */
+  .container {
+    flex-direction: column; /* Stacks .left-side and .right-side vertically */
+    width: 100%;
+    margin-top: 10%;
+  }
+  .left-side {
+    width: 100%;
+    height: auto; /* Adapts to content */
+  }
+  .right-side {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Intro Section (Name, Subtitle, Button) */
+  .intro {
+    transform: none; /* Removes desktop offsets */
+    margin-top: 50px; /* Positions near the top with some space */
+  }
+  .intro h1 {
+    font-size: 50px; /* Smaller name for mobile */
+  }
+  .intro h2 {
+    font-size: 25px; /* Smaller subtitle */
+    transform: none; /* Ensures no offset */
+  }
+  .about-me-button {
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto; /* Centers the button */
+    transform: translate(10px);
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Mobile-friendly projects section */
+
+
+
+
+
+
+
+
+
+
+/* Add this media query to your existing CSS */
+@media (max-width: 768px) {
+  /* General project section adjustments */
+  #projects {
+    padding: 15px;
+  }
+  
+  .projects-title {
+    font-size: 50px;
+    margin-bottom: 0.3em;
+  }
+  
+  .projects-subtitle {
+    font-size: 25px;
+    margin-bottom: 40px;
+  }
+  
+  .projects-container {
+    gap: 40px;
+  }
+  
+  /* Reset all desktop positioning */
+  .row:nth-child(1),
+  .row:nth-child(2),
+  .row:nth-child(3),
+  .row:nth-child(4) {
+    transform: translateX(0);
+    margin-top: 0;
+  }
+  
+  /* Create project container rectangles */
+  .row {
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-left: 50px;
+    
+    /* Add container styling */
+    background-color: white;
+    border: 1px solid #d0d0d0;
+    border-radius: 15px;
+    padding: 20px 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    width: 600px;
+    
+    /* Apply animation */
+    opacity: 0;
+    transform: scale(0.5);
+    animation: scroll 0.8s ease forwards;
+  }
+  
+  /* Stagger the animations */
+  .project-spotify { animation-delay: 0.1s; }
+  .project-BC { animation-delay: 0.3s; }
+  .project-ConcertVenue { animation-delay: 0.5s; }
+  .project-Website { animation-delay: 0.7s; }
+  
+  /* Animation Keyframes */
+  @keyframes scroll {
+    from {
+      opacity: 0;
+      scale: 0.5;
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+  
+  /* Adjust column dimensions */
+  .column {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+  }
+  
+  /* Image adjustments */
+  .image-column img {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+  }
+  
+  .project-BC .image-column img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    transform: translateX(0);
+  }
+  
+  /* Special ordering for BC and Website projects */
+  /* For BC project, reverse the column order (text first, then image) */
+  .project-BC {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  
+  /* For Website project, reverse the column order (text first, then image) */
+  .project-Website {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  
+  /* Center text for all projects */
+  .project-spotify .project-title,
+  .project-spotify .project-subtitle,
+  .project-spotify .project-body,
+  .project-BC .project-title,
+  .project-BC .project-subtitle,
+  .project-BC .project-body,
+  .project-ConcertVenue .project-title,
+  .project-ConcertVenue .project-subtitle,
+  .project-ConcertVenue .project-body,
+  .project-Website .project-title,
+  .project-Website .project-subtitle,
+  .project-Website .project-body {
+    text-align: center;
+  }
+  
+  /* Center buttons */
+  .project-spotify .download-btn,
+  .project-BC .download-btn,
+  .project-ConcertVenue .download-btn,
+  .project-Website .download-btn {
+    transform: translateX(0);
+  }
+  
+  /* Adjust font sizes for mobile */
+  .project-spotify .project-title,
+  .project-BC .project-title,
+  .project-ConcertVenue .project-title,
+  .project-Website .project-title {
+    font-size: 25px;
+  }
+  
+  .project-spotify .project-subtitle,
+  .project-BC .project-subtitle,
+  .project-ConcertVenue .project-subtitle,
+  .project-Website .project-subtitle {
+    font-size: 20px;
+  }
+  
+  /* Adjust body text for mobile */
+  .project-spotify .project-body {
+    font-size: 16px;
+  }
+  
+  .project-BC .project-body {
+    font-size: 16px;
+  }
+  
+  .project-ConcertVenue .project-body {
+    font-size: 16px;
+  }
+  
+  .project-Website .project-body {
+    font-size: 16px;
+  }
+}
+
+
+
+
+
+
+
+/* Mobile-Friendly Adjustments Expertise Section */
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+
+  .expertise-title {
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 50px;
+    transform: translateY(-60px);
+  }
+  
+  /* Expertise Section Subtitle */
+  .expertise-subtitle {
+    text-align: center;
+    font-size: 25px; /* Smaller than h2, larger than h3 */
+    font-family: 'Open Sans', sans-serif; /* Matches your existing typography */
+    color: #969696; /* Dark gray for subtlety, adjust as needed */
+    margin: 0 0 40px 0; /* Space below subtitle, above rectangles */
+    font-weight: 400; /* Lighter weight for contrast with h2 */
+    transform: translateY(-60px);
+  }
+
+
+  /* Expertise Section */
+  .rectangles-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .rectangle {
+    width: 500px;
+    height: 300px;
+    margin-bottom: 20px;
+  }
+  .text-wrapper {
+    transform: translateX(-10px);
+   
+  }
+  .rectangle img {
+    max-width: 200px;
+    height: 40px;
+    transform: translateX(30px);
+  }
+  .rectangle::after {
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px); /* For Safari/iOS support */
+  }
+  .rectangle h3 {
+    font-size: 40px;
+    text-align: left;
+    margin-left: 20px;
+  }
+
+  .rectangle p {
+    font-size: 16px;
+    text-align: left;
+    margin-left: 20px;
+  }
+}
+
+
